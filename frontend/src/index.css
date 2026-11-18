@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+/* ══════════════════════════════════════════════════════════════════════
+   TEMA "OCÉANO CANARIO" — dashboard oscuro con acentos teal/ámbar
+   (intencionadamente distinto del diseño claro tipo editorial)
+   ══════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  --color-noche-950: #060d18;
+  --color-noche-900: #0a1626;
+  --color-noche-800: #10203a;
+  --color-noche-700: #1a3050;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #060d18;
+  background-image:
+    radial-gradient(1100px 500px at 12% -8%, rgba(45, 212, 191, 0.13), transparent 60%),
+    radial-gradient(900px 480px at 88% -4%, rgba(129, 140, 248, 0.12), transparent 60%),
+    radial-gradient(700px 420px at 50% 110%, rgba(251, 191, 36, 0.07), transparent 65%);
+  background-attachment: fixed;
+  color: #e2e8f0;
+}
+
+/* ── Componentes utilitarios ─────────────────────────────────────────── */
+
+/* Tarjeta de cristal sobre el fondo nocturno */
+.panel {
+  border-radius: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 18px 40px -22px rgba(2, 8, 20, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.panel-destacada {
+  border-color: rgba(94, 234, 212, 0.35);
+  box-shadow:
+    0 18px 40px -22px rgba(2, 8, 20, 0.9),
+    0 0 0 1px rgba(94, 234, 212, 0.08),
+    0 0 34px -14px rgba(45, 212, 191, 0.4);
+}
+
+/* Etiqueta pequeña en mayúsculas (títulos de sección) */
+.kicker {
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #5eead4;
+}
+
+/* Cifras tabulares alineadas */
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Campo de formulario oscuro */
+.campo {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(6, 13, 24, 0.65);
+  color: #e2e8f0;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.campo::placeholder {
+  color: #64748b;
+}
+.campo:focus {
+  border-color: rgba(94, 234, 212, 0.7);
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.18);
+}
+
+/* Scrollbar oscuro y fino */
+.scroll-fino::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-fino::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 8px;
+}
+.scroll-fino::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.55);
+}
+.scroll-fino::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── Leaflet integrado en el tema oscuro ─────────────────────────────── */
+
+.leaflet-container {
+  font-family: inherit;
+  z-index: 0;
+  background: #0a1626;
+}
+
+/* Teselas OSM convertidas a modo oscuro por CSS (sin claves de API) */
+.mapa-oscuro .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(190deg) brightness(0.82) contrast(1.06) saturate(0.55);
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #10203a;
+  color: #e2e8f0;
+  box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.8);
+}
+.leaflet-popup-content {
+  margin: 10px 14px;
+  line-height: 1.45;
+}
+.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+}
+.leaflet-control-attribution {
+  background: rgba(6, 13, 24, 0.75) !important;
+  color: #64748b !important;
+  font-size: 9px !important;
+}
+.leaflet-control-attribution a {
+  color: #7dd3fc !important;
+}
+.leaflet-control-zoom a {
+  background: #10203a !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(148, 163, 184, 0.25) !important;
+}
+.leaflet-control-zoom a:hover {
+  background: #1a3050 !important;
+}
