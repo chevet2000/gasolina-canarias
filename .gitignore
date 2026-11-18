@@ -1,0 +1,8 @@
+# Dependencias y artefactos de compilación
+node_modules/
+.vercel/
+frontend/dist/
+
+# Archivos auxiliares de SQLite (la .db SÍ debe subirse: no se ignora)
+backend/data/*-wal
+backend/data/*-shm
